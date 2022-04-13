@@ -78,10 +78,10 @@
       }
     </style>
   </head>
-  <body>
+  <body id="home">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
-        <a class="navbar-brand" href="#">TugasTechnical</a>
+        <a class="navbar-brand" href="#home">TugasTechnical</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -96,20 +96,22 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="#home"
+                >Home</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="#feature">Features</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">My Team</a>
+              <a class="nav-link" href="#">Our Team</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
     <!-- Hero Section -->
-    <section>
+    <section id="hero">
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-sm-12 info-hero">
@@ -117,9 +119,11 @@
               Temukan Berat Badanmu Tanpa Perlu Timbangan
             </h1>
             <p>Aplikasi ini akan membantumu untuk mengetahui berat badan mu</p>
-            <button type="button" class="btn btn-primary btn-lg">
-              Temukan Sekarang >>
-            </button>
+            <a href="#feature">
+              <button type="button" class="btn btn-primary btn-lg">
+                Temukan Sekarang >>
+              </button>
+            </a>
           </div>
           <div class="col-md-6 col-sm-12 img-hero">
             <img src="./static/img/img-hero.jpg" alt="" />
@@ -145,14 +149,16 @@
             <img width="600" src="./static/img/img-feature.jpg" alt="" />
           </div>
           <div class="col-md-6 col-sm-12 feature">
-            <form action="">
+            <form action="" method="POST">
               <div class="row">
                 <div class="col-12">
                   <div class="mb-3">
                     <label for="gender" class="form-label">Jenis Kelamin</label>
                     <select
+                      id="gender"
                       aria-labelledby="gender"
                       class="form-select"
+                      name="gender"
                       aria-label="--- Pilih Jenis Kelamin ---"
                     >
                       <option selected>--- Pilih Jenis Kelamin ---</option>
@@ -166,12 +172,17 @@
                     <input
                       type="number"
                       class="form-control"
-                      id="tinggi"
+                      id="height"
+                      name="height"
                       aria-describedby="tinggi"
                     />
                   </div>
-                  <button type="button" class="btn btn-primary btn-lg">
-                    Kirim
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-lg"
+                    value="Get Weight"
+                  >
+                    Prediksi
                   </button>
                 </div>
               </div>
@@ -180,7 +191,24 @@
         </div>
       </div>
     </section>
+
+    {% if weight %}
+    <section id="result">
+      <div class="container">
+        <center class="mb-5">
+          <div class="row">
+            <div class="col-12 feature-title">
+              <h2 class="text-primary">Hasil Prediksi</h2>
+              <p class="text-primary">Berat Badanmu adalah {{ weight }} Kg.</p>
+            </div>
+          </div>
+        </center>
+      </div>
+      {% endif %}
     <!-- End Section Features -->
+
+    <!-- Section Our Team -->
+    <!-- End Section Our team -->
 
     <!-- Optional JavaScript; choose one of the two! -->
 
